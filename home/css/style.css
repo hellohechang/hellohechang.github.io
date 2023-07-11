@@ -58,14 +58,11 @@ img {
 }
 
 body {
-  cursor: url(../img/normal.cur), auto !important
+  cursor: url("../img/normal.cur"), default
 }
 
-a {
-  cursor: url(../img/link.cur), auto !important;
-  text-decoration: none;
-  color: var(--color-link);
-  outline: 0
+[cursor]:hover {
+  cursor: url("../img/link.cur"), pointer
 }
 
 @font-face {
@@ -564,17 +561,15 @@ main {
   display: block;
   transition: all .2s;
   margin: 10px 0;
-  width: 100px;
+  width: 110px;
   border-left: .1px solid hsla(0, 0%, 100%, .1);
-  border-right: .1px solid hsla(0, 0%, 100%, .1)
-}
-
-#card .card-inner ul li a {
+  border-right: .1px solid hsla(0, 0%, 100%, .1);
+  padding: 10px 0;
   color: #b6b6b6;
-  transition: all .2s
+  overflow: hidden;
 }
 
-#card .card-inner ul li a i {
+#card .card-inner ul li i {
   display: block;
   width: 1.5em;
   height: 1.5em;
@@ -586,11 +581,9 @@ main {
   -moz-osx-font-smoothing: grayscale
 }
 
-#card .card-inner ul li a:hover {
-  color: #f6f6f6;
-  text-shadow: 0 0 2px #f6f6f6
-}
-
 #card .card-inner ul li:hover {
+  color: #f6f6f6;
+  text-shadow: 0 0 2px #f6f6f6;
+  border-radius: 4px;
   transform: translateY(-2px)
 }
