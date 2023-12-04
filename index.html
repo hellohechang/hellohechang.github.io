@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="google" content="notranslate" />
+    <meta name="description" content="这是一个简洁的个人主页" />
+    <meta name="Keywords" content="home,主页" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=0;"/> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- <meta name="theme-color" content="#2979ff"> -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="assets" />
+    <title>土豆の主页</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet icon" href="/favicon.ico" />
+  </head>
+  <body>
+    <div id="box"></div>
+    <script>
+      // 默认本地持久数据
+      const defaultLocalData = {
+        dark: 0, // 黑暗模式 0：随系统 1：开启 2：关闭
+        linkMode: 'col', // 排列模式 row: 横向 col：纵向
+        clickHeart: false, // 点击比心 true：开 false：关
+        keySound: false, // 提示音 true：开 false：关
+        inputEffect: true, // 模拟输入 true：开 false：关
+      };
+      // 标头
+      const title = 'root@chang:~# ';
+      // 结束语
+      const endWord = 'Welcome to my homepage';
+      // 命令和输出结果
+      const data = [
+        {
+          cmd: 'cat me.txt',
+          res: [
+            { name: '一个爱学习、爱折腾的土豆🥔' },
+            { name: 'Github', link: 'https://github.com/hellohechang' },
+            { name: 'Emial', link: 'mailto:hellohechang@gmail.com' },
+          ],
+        },
+        {
+          cmd: `./links.sh`,
+          res: [
+            { name: 'home', link: 'https://github.com/hellohechang/home' },
+            { name: 'whello', link: 'https://github.com/hellohechang/whello' },
+            {
+              name: 'hellofile',
+              link: 'https://github.com/hellohechang/hellofile',
+            },
+            { name: 'dove', link: 'https://github.com/hellohechang/dove' },
+            {
+              name: 'getfavicon',
+              link: 'https://github.com/hellohechang/getfavicon',
+            },
+            { name: 'password', link: '/page/getpd' },
+            { name: '数独', link: '/page/suduku' },
+            { name: '扫雷', link: '/page/bomb' },
+          ],
+        },
+        {
+          cmd: `./date.sh`,
+          res: [{ type: 'date' }],
+        },
+        {
+          cmd: './setting.sh',
+          res: [{ type: 'setting' }],
+        },
+      ];
+    </script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/click.js"></script>
+  </body>
+</html>
