@@ -36,37 +36,67 @@
         {
           cmd: 'cat me.txt',
           res: [
-            { name: '一个爱学习、爱折腾的土豆🥔' },
-            { name: 'Github', link: 'https://github.com/hellohechang' },
-            { name: 'Emial', link: 'mailto:hellohechang@gmail.com' },
+            { type: 'text', name: '一个爱学习、爱折腾的土豆🥔' },
+            {
+              type: 'link',
+              name: 'Github',
+              link: 'https://github.com/hellohechang',
+            },
+            {
+              type: 'link',
+              name: 'Emial',
+              link: 'mailto:hellohechang@gmail.com',
+            },
           ],
         },
         {
           cmd: `./links.sh`,
           res: [
-            { name: 'home', link: 'https://github.com/hellohechang/home' },
-            { name: 'whello', link: 'https://github.com/hellohechang/whello' },
             {
-              name: 'hellofile',
-              link: 'https://github.com/hellohechang/hellofile',
+              type: 'link',
+              name: 'home',
+              link: 'https://github.com/hellohechang/home',
             },
-            { name: 'dove', link: 'https://github.com/hellohechang/dove' },
             {
+              type: 'link',
+              name: 'hello',
+              link: 'https://github.com/hellohechang/hello',
+            },
+            {
+              type: 'link',
+              name: 'dove',
+              link: 'https://github.com/hellohechang/dove',
+            },
+            {
+              type: 'link',
               name: 'getfavicon',
               link: 'https://github.com/hellohechang/getfavicon',
             },
-            { name: 'password', link: '/page/getpd' },
-            { name: '数独', link: '/page/suduku' },
-            { name: '扫雷', link: '/page/bomb' },
+            { type: 'link', name: 'password', link: '/page/getpd' },
+            { type: 'link', name: '数独', link: '/page/suduku' },
+            { type: 'link', name: '扫雷', link: '/page/bomb' },
           ],
         },
         {
           cmd: `./date.sh`,
-          res: [{ type: 'date' }],
+          res: [{ type: 'date', name: '日期' }],
         },
         {
           cmd: './setting.sh',
-          res: [{ type: 'setting' }],
+          res: [{ type: 'setting', name: '设置' }],
+        },
+      ];
+      const settingData = [
+        {
+          cmd: './settingList.sh',
+          res: [
+            { type: 'dark', name: '黑暗模式：' },
+            { type: 'linkMode', name: '排列模式：' },
+            { type: 'inputEffect', name: '模拟输入：' },
+            { type: 'clickHeart', name: '点击比心：' },
+            { type: 'keySound', name: '提示音：' },
+            { type: 'back', name: '返回' },
+          ],
         },
       ];
     </script>

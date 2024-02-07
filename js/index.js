@@ -1,19 +1,6 @@
 const box = document.querySelector('#box');
 const darkData = ['随系统', '已开启', '已关闭'];
 const linkModeData = { row: '横向排列', col: '纵向排列' };
-const settingData = [
-  {
-    cmd: './settingList.sh',
-    res: [
-      { type: 'dark' },
-      { type: 'linkMode' },
-      { type: 'inputEffect' },
-      { type: 'clickHeart' },
-      { type: 'keySound' },
-      { type: 'back' },
-    ],
-  },
-];
 let HASH = queryURLParams(myOpen()).HASH;
 let enter = null;
 let darkStatus = _getData('dark'),
@@ -155,75 +142,69 @@ function createRes(res) {
   for (let i = 0; i < res.length; i++) {
     const { name, link, type } = res[i];
     let oDiv = null;
-    if (!type && !name) return;
-    if (link && name) {
+    if (type === 'link') {
       // 可跳转的
-      oDiv = createLink('link', name, (oDiv, oSpan) => {
+      oDiv = createLink(type, name, (oDiv, oSpan) => {
         if (linkMode == 'row') {
           oDiv.classList.add('link');
         }
         oSpan.classList.add('link');
         oSpan.dataset.link = link;
       });
-    } else {
-      if (type) {
-        if (type == 'date') {
-          // 日期
-          oDiv = createDefault(type, getTime(), (oDiv) => {
-            oDiv.classList.add('dateinfo');
-          });
-        } else if (type == 'dark') {
-          // 黑暗模式
-          oDiv = createLink(type, darkData[darkStatus], (oDiv) => {
-            if (linkMode == 'row') {
-              oDiv.classList.add('link');
-            }
-            oDiv.innerText = `黑暗模式：`;
-          });
-        } else if (type == 'setting') {
-          // 设置
-          oDiv = createLink(type, 'setting', (oDiv) => {
-            if (linkMode == 'row') {
-              oDiv.classList.add('link');
-            }
-          });
-        } else if (type == 'back') {
-          oDiv = createLink(type, 'back');
-        } else if (type == 'linkMode') {
-          oDiv = createLink(type, linkModeData[linkMode], (oDiv) => {
-            if (linkMode == 'row') {
-              oDiv.classList.add('link');
-            }
-            oDiv.innerText = `排列模式：`;
-          });
-        } else if (type == 'clickHeart') {
-          let h = _getData('clickHeart');
-          oDiv = createLink(type, h ? '已开启' : '已关闭', (oDiv) => {
-            if (linkMode == 'row') {
-              oDiv.classList.add('link');
-            }
-            oDiv.innerText = `点击比心：`;
-          });
-        } else if (type == 'keySound') {
-          let h = _getData('keySound');
-          oDiv = createLink(type, h ? '已开启' : '已关闭', (oDiv) => {
-            if (linkMode == 'row') {
-              oDiv.classList.add('link');
-            }
-            oDiv.innerText = `提示音：`;
-          });
-        } else if (type == 'inputEffect') {
-          oDiv = createLink(type, inputEffect ? '已开启' : '已关闭', (oDiv) => {
-            if (linkMode == 'row') {
-              oDiv.classList.add('link');
-            }
-            oDiv.innerText = `模拟输入：`;
-          });
+    } else if (type === 'date') {
+      // 日期
+      oDiv = createDefault(type, getTime(), (oDiv) => {
+        oDiv.classList.add('dateinfo');
+      });
+    } else if (type === 'dark') {
+      // 黑暗模式
+      oDiv = createLink(type, darkData[darkStatus], (oDiv) => {
+        if (linkMode == 'row') {
+          oDiv.classList.add('link');
         }
-      } else {
-        // 默认
-        oDiv = createDefault('default', name);
-      }
+        oDiv.innerText = name;
+      });
+    } else if (type === 'setting') {
+      // 设置
+      oDiv = createLink(type, name, (oDiv) => {
+        if (linkMode == 'row') {
+          oDiv.classList.add('link');
+        }
+      });
+    } else if (type === 'back') {
+      oDiv = createLink(type, name);
+    } else if (type === 'linkMode') {
+      oDiv = createLink(type, linkModeData[linkMode], (oDiv) => {
+        if (linkMode == 'row') {
+          oDiv.classList.add('link');
+        }
+        oDiv.innerText = name;
+      });
+    } else if (type == 'clickHeart') {
+      let h = _getData('clickHeart');
+      oDiv = createLink(type, h ? '已开启' : '已关闭', (oDiv) => {
+        if (linkMode == 'row') {
+          oDiv.classList.add('link');
+        }
+        oDiv.innerText = name;
+      });
+    } else if (type == 'keySound') {
+      let h = _getData('keySound');
+      oDiv = createLink(type, h ? '已开启' : '已关闭', (oDiv) => {
+        if (linkMode == 'row') {
+          oDiv.classList.add('link');
+        }
+        oDiv.innerText = name;
+      });
+    } else if (type == 'inputEffect') {
+      oDiv = createLink(type, inputEffect ? '已开启' : '已关闭', (oDiv) => {
+        if (linkMode == 'row') {
+          oDiv.classList.add('link');
+        }
+        oDiv.innerText = name;
+      });
+    } else if (type === 'text') {
+      oDiv = createDefault('default', name);
     }
     if (oDiv) {
       resBox.appendChild(oDiv);
